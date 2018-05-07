@@ -12,7 +12,7 @@ namespace MRRC.Domain
     public enum Transmission { automatic, manual }
 
     public enum Fuel { petrol, diesel }
-    class Vehicle
+    class Vehicle : IEquatable<Vehicle>
     {
         private String _registration, _make, _model, _year;
         private VehicleClass _vehicleClass;
@@ -48,5 +48,11 @@ namespace MRRC.Domain
         public string Make { get => _make; set => _make = value; }
         public string Model { get => _model; set => _model = value; }
         public string Year { get => _year; set => _year = value; }
+
+        // Check if the vehicles are the same by verifying Registration number
+        public override bool Equals(object obj)
+        {
+            return this.Registration == ((Vehicle)obj).Registration;
+        }
     }
 }

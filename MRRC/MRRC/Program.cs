@@ -18,5 +18,7 @@ namespace MRRC
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWindow());
         }
+
+        
     }
 }
