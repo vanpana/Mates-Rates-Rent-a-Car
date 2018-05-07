@@ -12,7 +12,7 @@ namespace MRRC.Util
     {
         private readonly static String DataFolder = "data/";
         private readonly static String FleetCSV = "fleet.csv";
-        private readonly static String ClientsCSV = "clients.csv";
+        private readonly static String CustomersCSV = "customers.csv";
         private readonly static String RentalsCSV = "rentals.csv";
 
         // Mutex for preventing reading from files if they are being created
@@ -22,7 +22,7 @@ namespace MRRC.Util
          * Getters for CSV files paths.
          * */
         public static String getFleetsFile() { return DataFolder + FleetCSV; }
-        public static String getClientsFile() { return DataFolder + ClientsCSV; }
+        public static String getCustomersFile() { return DataFolder + CustomersCSV; }
         public static String getRentalsFile() { return DataFolder + RentalsCSV; }
 
         /*
@@ -42,7 +42,7 @@ namespace MRRC.Util
             if (!File.Exists(getFleetsFile())) { File.Create(getFleetsFile()).Close(); }
 
             // Create the empty clients file
-            if (!File.Exists(getClientsFile())) { File.Create(getClientsFile()).Close(); }
+            if (!File.Exists(getCustomersFile())) { File.Create(getCustomersFile()).Close(); }
 
             // Create the empty rentals file
             if (!File.Exists(getRentalsFile())) { File.Create(getRentalsFile()).Close(); }

@@ -12,5 +12,13 @@ namespace MRRC.Util
         {
             return (T) Enum.Parse(typeof(T), value, true);
         }
+
+        /*
+         * Parses a string and determines its bool value. If the value is not "true", it's automatically false
+         * */
+        public static bool BoolFromString(String value)
+        {
+            return value.ToLower().Equals("true") ? true : false;
+        }
     }
 }

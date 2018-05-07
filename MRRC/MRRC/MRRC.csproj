@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\ControllerImpl.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
     <Compile Include="Domain\Entities\Vehicle.cs" />
     <Compile Include="Domain\Exceptions\ControllerException.cs" />
