@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MRRC.Repository
 {
-    abstract class ARepository<T>
+    public abstract class ARepository<T>
     {
         // The headers for the lists
         protected String[] _header;

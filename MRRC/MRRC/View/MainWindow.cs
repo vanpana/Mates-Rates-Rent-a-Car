@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MRRC.Controller;
 using MRRC.Domain.Validators;
 using MRRC.Repository;
+using MRRC.View;
 
 namespace MRRC
 {
@@ -24,6 +25,11 @@ namespace MRRC
             // Initialize the Controller with the Repositories
             controller = new ControllerImpl(new FleetRepository(new VehicleValidator()),
                 new CustomerRepository(new CustomerValidator()));
+        }
+
+        private void fleetButton_Click(object sender, EventArgs e)
+        {
+            new FleetManager(controller).Show();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace MRRC.Controller
 {
-    class ControllerImpl
+    public class ControllerImpl
     {
         private ARepository<Vehicle> _vehicleRepository;
         private ARepository<Customer> _customerRepository;
@@ -42,6 +42,8 @@ namespace MRRC.Controller
             }
             return null;
         }
+
+        public String[] VehicleHeader { get => _vehicleRepository.Header; }
 
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
     }

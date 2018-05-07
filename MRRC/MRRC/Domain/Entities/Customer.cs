@@ -6,7 +6,7 @@ namespace MRRC.Domain
     public enum CustomerTitle { Ms, Mr, Mrs }
 
     public enum Gender { male, female }
-    class Customer : IEquatable<Customer>
+    public class Customer : IEquatable<Customer>
     {
         private int _id;
         private CustomerTitle _title;

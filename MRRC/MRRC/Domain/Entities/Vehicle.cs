@@ -12,7 +12,7 @@ namespace MRRC.Domain
     public enum Transmission { automatic, manual }
 
     public enum Fuel { petrol, diesel }
-    class Vehicle : IEquatable<Vehicle>
+    public class Vehicle : IEquatable<Vehicle>
     {
         private String _registration, _make, _model, _year;
         private VehicleClass _vehicleClass;
@@ -22,7 +22,7 @@ namespace MRRC.Domain
         private Boolean _gps, _sunroof;
         private String _color;
         private int _dailyRate;
-        
+
         public Vehicle(String registration, String make, String model, String year, String vehicleClass, int seatNo,
             String transmission, String fuel, String gps, String sunroof, String color, int dailyRate)
         {
@@ -41,7 +41,7 @@ namespace MRRC.Domain
         }
 
         public Vehicle(String[] line)
-            : this(line[0], line[1], line[2], line[3], line[4], int.Parse(line[5]), line[6], line[7], line[8], line[9], line[10], int.Parse(line[11])) {}
+            : this(line[0], line[1], line[2], line[3], line[4], int.Parse(line[5]), line[6], line[7], line[8], line[9], line[10], int.Parse(line[11])) { }
 
 
         public string Registration { get => _registration; set => _registration = value; }
@@ -61,6 +61,12 @@ namespace MRRC.Domain
         public bool Equals(Vehicle other)
         {
             return this.Registration.Equals(other.Registration);
+        }
+
+        public String CSV
+        {
+            get => $" {_registration}, {_make}, {_model}, {_year}, {_vehicleClass.ToString()}, {_seatNo.ToString()}," +
+               $"{_transmission.ToString()}, {_fuel.ToString()}, {_gps.ToString()}, {_sunroof.ToString()}, {_color}, {_dailyRate.ToString()}";
         }
     }
 }

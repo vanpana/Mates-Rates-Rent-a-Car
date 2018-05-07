@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MRRC.Domain.Validators
 {
-    interface IValidator<T>
+    public interface IValidator<T>
     {
         void Validate(T entity);
     }

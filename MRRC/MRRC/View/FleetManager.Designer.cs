@@ -1,6 +1,6 @@
-﻿namespace MRRC
+﻿namespace MRRC.View
 {
-    partial class MainWindow
+    partial class FleetManager
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.fleetList = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // fleetList
+            // 
+            this.fleetList.FormattingEnabled = true;
+            this.fleetList.ItemHeight = 24;
+            this.fleetList.Location = new System.Drawing.Point(12, 12);
+            this.fleetList.Name = "fleetList";
+            this.fleetList.Size = new System.Drawing.Size(776, 340);
+            this.fleetList.TabIndex = 0;
+            // 
+            // FleetManager
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.fleetList);
+            this.Name = "FleetManager";
+            this.Text = "FleetManager";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox fleetList;
     }
 }
-
