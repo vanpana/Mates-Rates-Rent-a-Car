@@ -8,7 +8,7 @@ namespace MRRC.Repository
 {
     class FleetRepository : ARepository<Vehicle>
     {
-        FleetRepository(IValidator<Vehicle> validator) : base(validator) {}
+        public FleetRepository(IValidator<Vehicle> validator) : base(validator) {}
 
         protected override void LoadFromFile()
         {

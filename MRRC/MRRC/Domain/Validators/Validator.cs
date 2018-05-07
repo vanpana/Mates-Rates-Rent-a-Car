@@ -8,6 +8,6 @@ namespace MRRC.Domain.Validators
 {
     interface IValidator<T>
     {
-        bool Validate(T entity);
+        void Validate(T entity);
     }
 }

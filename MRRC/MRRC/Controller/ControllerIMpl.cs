@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 namespace MRRC.Controller
 {
-    class Controller
+    class ControllerImpl
     {
         private ARepository<Vehicle> _vehicleRepository;
         private ARepository<Customer> _customerRepository;
 
-        public Controller(ARepository<Vehicle> vehicleRepository, ARepository<Customer> customerRepository)
+        public ControllerImpl(ARepository<Vehicle> vehicleRepository, ARepository<Customer> customerRepository)
         {
             this._vehicleRepository = vehicleRepository;
             this._customerRepository = customerRepository;

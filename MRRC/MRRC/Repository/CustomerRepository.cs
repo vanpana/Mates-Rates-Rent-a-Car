@@ -11,7 +11,7 @@ namespace MRRC.Repository
 {
     class CustomerRepository : ARepository<Customer>
     {
-        CustomerRepository(IValidator<Customer> validator) : base(validator) { }
+        public CustomerRepository(IValidator<Customer> validator) : base(validator) { }
 
         protected override void LoadFromFile()
         {
