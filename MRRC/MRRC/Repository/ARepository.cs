@@ -1,4 +1,5 @@
-﻿using MRRC.Domain.Exceptions;
+﻿using MRRC.Domain;
+using MRRC.Domain.Exceptions;
 using MRRC.Domain.Validators;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,7 @@ namespace MRRC.Repository
             Items.Remove(item);
         }
 
+        public String[] Header { get => _header; }
         public List<T> Items { get => _items; }
     }
 }

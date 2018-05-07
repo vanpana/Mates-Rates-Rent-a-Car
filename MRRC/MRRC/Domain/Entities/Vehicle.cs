@@ -37,6 +37,8 @@ namespace MRRC.Domain
             this.DailyRate = dailyRate;
         }
 
+        public Vehicle(String[] line) : this(line[0], line[1], line[2], line[3], line[4], int.Parse(line[5]), line[6], line[7], line[8], int.Parse(line[9])) {}
+
 
         public string Registration { get => _registration; set => _registration = value; }
         public VehicleClass VehicleClass { get => _vehicleClass; set => _vehicleClass = value; }
@@ -50,9 +52,9 @@ namespace MRRC.Domain
         public string Year { get => _year; set => _year = value; }
 
         // Check if the vehicles are the same by verifying Registration number
-        public override bool Equals(object obj)
+        public bool Equals(Vehicle other)
         {
-            return this.Registration == ((Vehicle)obj).Registration;
+            return this.Registration.Equals(other.Registration);
         }
     }
 }

@@ -3,12 +3,15 @@ using MRRC.Domain.Validators;
 using MRRC.Util;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MRRC.Repository
 {
-    class FleetRepository : ARepository<Vehicle>
+    class CustomerRepository : ARepository<Customer>
     {
-        FleetRepository(IValidator<Vehicle> validator) : base(validator) {}
+        CustomerRepository(IValidator<Customer> validator) : base(validator) { }
 
         protected override void LoadFromFile()
         {
@@ -20,7 +23,10 @@ namespace MRRC.Repository
             splitLines.RemoveAt(0);
 
             // Go through each other line and add the vehicles to the list
-            foreach (String[] line in splitLines) { Add(new Vehicle(line)); }
+            foreach (String[] line in splitLines)
+            {
+                Add(new Customer(line));
+            }
         }
     }
 }

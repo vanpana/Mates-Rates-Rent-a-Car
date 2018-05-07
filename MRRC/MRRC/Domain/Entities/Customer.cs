@@ -6,7 +6,7 @@ namespace MRRC.Domain
     public enum CustomerTitle { Ms, Mr, Mrs }
 
     public enum Gender { male, female }
-    class Customer
+    class Customer : IEquatable<Customer>
     {
         private int _id;
         private CustomerTitle _title;
@@ -25,11 +25,19 @@ namespace MRRC.Domain
             this.DateOfBirth = dateOfBirth;
         }
 
+        public Customer(String[] parameters)
+            : this(int.Parse(parameters[0]), parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]) {}
+
         public int Id { get => _id; set => _id = value; }
         public CustomerTitle Title { get => _title; set => _title = value; }
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public Gender Gender { get => _gender; set => _gender = value; }
         public string DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
+
+        public bool Equals(Customer other)
+        {
+            return this.Id == other.Id;
+        }
     }
 }
