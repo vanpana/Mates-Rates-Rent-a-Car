@@ -14,27 +14,39 @@ namespace MRRC.Domain
     public enum Fuel { petrol, diesel }
     class Vehicle
     {
-        string registration, make, model, year;
-        VehicleClass vehicleClass;
-        int seatNo;
-        Transmission transmission;
-        Fuel fuel;
-        String color;
-        int dailyRate;
+        private String _registration, _make, _model, _year;
+        private VehicleClass _vehicleClass;
+        private int _seatNo;
+        private Transmission _transmission;
+        private Fuel _fuel;
+        private String _color;
+        private int _dailyRate;
         
         public Vehicle(String registration, String make, String model, String year, String vehicleClass, int seatNo,
             String transmission, String fuel, String color, int dailyRate)
         {
-            this.registration = registration;
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.vehicleClass = Various.ParseEnum<VehicleClass>(vehicleClass);
-            this.seatNo = seatNo;
-            this.transmission = Various.ParseEnum<Transmission>(transmission);
-            this.fuel = Various.ParseEnum<Fuel>(fuel);
-            this.color = color;
-            this.dailyRate = dailyRate;
+            this.Registration = registration;
+            this.Make = make;
+            this.Model = model;
+            this.Year = year;
+            this.VehicleClass = Various.ParseEnum<VehicleClass>(vehicleClass);
+            this.SeatNo = seatNo;
+            this.Transmission = Various.ParseEnum<Transmission>(transmission);
+            this.Fuel = Various.ParseEnum<Fuel>(fuel);
+            this.Color = color;
+            this.DailyRate = dailyRate;
         }
+
+
+        public string Registration { get => _registration; set => _registration = value; }
+        public VehicleClass VehicleClass { get => _vehicleClass; set => _vehicleClass = value; }
+        public int SeatNo { get => _seatNo; set => _seatNo = value; }
+        public Transmission Transmission { get => _transmission; set => _transmission = value; }
+        public Fuel Fuel { get => _fuel; set => _fuel = value; }
+        public string Color { get => _color; set => _color = value; }
+        public int DailyRate { get => _dailyRate; set => _dailyRate = value; }
+        public string Make { get => _make; set => _make = value; }
+        public string Model { get => _model; set => _model = value; }
+        public string Year { get => _year; set => _year = value; }
     }
 }

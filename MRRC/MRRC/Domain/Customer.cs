@@ -17,43 +17,19 @@ namespace MRRC.Domain
 
         public Customer(int id, String customerTitle, String firstName, String lastName, String gender, String dateOfBirth)
         {
-            this._id = id;
-            this._title = Various.ParseEnum<CustomerTitle>(customerTitle);
-            this._firstName = firstName;
-            this._lastName = lastName;
-            this._gender = Various.ParseEnum<Gender>(gender);
-            this._dateOfBirth = dateOfBirth;
+            this.Id = id;
+            this.Title = Various.ParseEnum<CustomerTitle>(customerTitle);
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Gender = Various.ParseEnum<Gender>(gender);
+            this.DateOfBirth = dateOfBirth;
         }
 
-        public int Id
-        {
-            get { return Id; }
-        }
-
-        public String Title
-        {
-            get { return _title.ToString();  }
-        }
-        
-        public String FirstName
-        {
-            get { return _firstName; }
-        }
-
-        public String LastName
-        {
-            get { return _lastName; }
-        }
-
-        public String Gender
-        {
-            get { return _gender.ToString(); }
-        }
-
-        public String DOB
-        {
-            get { return _dateOfBirth; }
-        }
-        
+        public int Id { get => _id; set => _id = value; }
+        public CustomerTitle Title { get => _title; set => _title = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public Gender Gender { get => _gender; set => _gender = value; }
+        public string DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
     }
 }
