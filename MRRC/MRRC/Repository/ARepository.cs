@@ -42,6 +42,8 @@ namespace MRRC.Repository
                 throw new RepositoryException(validatorException.Message);
             }
 
+            // Check if the item already exists
+
             // Add the item to the list
             _items.Add(item);
         }

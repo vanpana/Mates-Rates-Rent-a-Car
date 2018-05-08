@@ -72,5 +72,10 @@ namespace MRRC.Util
 
             return result;
         }
+
+        public static void SaveDataToFile(String pathToFile, String data)
+        {
+            File.WriteAllText(pathToFile, data);
+        }
     }
 }

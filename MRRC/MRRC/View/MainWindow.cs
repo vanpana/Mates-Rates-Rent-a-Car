@@ -16,6 +16,8 @@ using MRRC.View;
 
 namespace MRRC
 {
+    public enum Actions { add, update, delete }
+
     public partial class MainWindow : Form
     {
         private ControllerImpl controller;
