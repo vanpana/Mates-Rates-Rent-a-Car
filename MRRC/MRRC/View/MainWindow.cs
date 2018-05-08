@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MRRC.Controller;
+using MRRC.Domain;
 using MRRC.Domain.Exceptions;
 using MRRC.Domain.Validators;
 using MRRC.Repository;

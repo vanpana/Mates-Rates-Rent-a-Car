@@ -52,7 +52,9 @@ namespace MRRC.Repository
         {
             // Search for the index of the item
             int index;
-            for (index = 0; index < _items.Count; index++) if (_items[index].Equals(item)) break;
+            for (index = 0; index < _items.Count; index++)
+                if (EqualityComparer<T>.Default.Equals(_items[index], item))
+                    break;
 
             // Replace the old item with the new one 
             _items[index] = item;

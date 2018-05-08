@@ -182,6 +182,10 @@ namespace MRRC.View
                 // The add logic
                 if (action == Actions.add)
                 {
+                    // Check if the ID has content
+                    if (idText.Text == "") throw new Exception("ID cannot be empty!");
+
+                    // Add the customer
                     controller.AddCustomer(
                         int.Parse(idText.Text),
                         titleCombo.GetItemText(titleCombo.SelectedItem),
@@ -189,18 +193,41 @@ namespace MRRC.View
                         lastNameText.Text,
                         genderCombo.GetItemText(genderCombo.SelectedItem),
                         dateOfBirthText.Text);
+
+                    // Hide the inputs if successful
+                    HideInputs();
                 }
 
                 // The update logic 
                 else if (action == Actions.update)
                 {
+                    // Check if the ID has content
+                    if (idText.Text == "") throw new Exception("ID cannot be empty!");
 
+                    // Update the customer
+                    controller.UpdateCustomer(
+                        int.Parse(idText.Text),
+                        titleCombo.GetItemText(titleCombo.SelectedItem),
+                        firstNameText.Text,
+                        lastNameText.Text,
+                        genderCombo.GetItemText(genderCombo.SelectedItem),
+                        dateOfBirthText.Text);
+
+                    // Hide the inputs if successful
+                    HideInputs();
                 }
 
                 // The delete logic
                 else if (action == Actions.delete)
                 {
+                    // Check if the ID has content
+                    if (idText.Text == "") throw new Exception("ID cannot be empty!");
 
+                    // Delete the customer
+                    controller.DeleteCustomer(int.Parse(idText.Text));
+
+                    // Hide the inputs if successful
+                    HideInputs();
                 }
             } catch (Exception ce)
             {
