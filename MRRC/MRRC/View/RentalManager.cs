@@ -29,6 +29,10 @@ namespace MRRC.View
         * */
         private void LoadListItems()
         {
+            // Load header
+            Header.Text = String.Join(", ", controller.RentalHeader);
+
+            // Load items
             foreach (Rental rental in controller.Rentals)
             {
                 rentalList.Items.Add(rental.CSV);
