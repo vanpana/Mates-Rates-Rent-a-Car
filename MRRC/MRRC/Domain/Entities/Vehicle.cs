@@ -43,6 +43,10 @@ namespace MRRC.Domain
         public Vehicle(String[] line)
             : this(line[0], line[1], line[2], line[3], line[4], int.Parse(line[5]), line[6], line[7], line[8], line[9], line[10], int.Parse(line[11])) { }
 
+        public Vehicle(string registration)
+        {
+            Registration = registration;
+        }
 
         public string Registration { get => _registration; set => _registration = value; }
         public VehicleClass VehicleClass { get => _vehicleClass; set => _vehicleClass = value; }

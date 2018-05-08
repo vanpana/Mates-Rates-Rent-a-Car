@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MRRC.Repository
 {
-    public abstract class ARepository<T>
+    public abstract class ARepository<T, Key>
     {
         // The headers for the lists
         protected String[] _header;
@@ -65,6 +65,8 @@ namespace MRRC.Repository
             // Remove the item from the list
             Items.Remove(item);
         }
+
+        public abstract T GetItem(Key key);
 
         public String[] Header { get => _header; }
         public List<T> Items { get => _items; }

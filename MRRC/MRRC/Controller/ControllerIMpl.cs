@@ -8,14 +8,16 @@ namespace MRRC.Controller
 {
     public class ControllerImpl
     {
-        private ARepository<Vehicle> _vehicleRepository;
-        private ARepository<Customer> _customerRepository;
+        private ARepository<Vehicle, String> _vehicleRepository;
+        private ARepository<Customer, int> _customerRepository;
 
-        public ControllerImpl(ARepository<Vehicle> vehicleRepository, ARepository<Customer> customerRepository)
+        public ControllerImpl(ARepository<Vehicle, String> vehicleRepository, ARepository<Customer, int> customerRepository)
         {
             this._vehicleRepository = vehicleRepository;
             this._customerRepository = customerRepository;
         }
+
+        /** FLEET METHODS**/
 
         /*
          * Adds a vehicle using all the fields necessary
@@ -30,21 +32,46 @@ namespace MRRC.Controller
                 throw new ControllerException(repositoryException.Message);
             }
         }
-        
-        // TODO: Update vehicle
-        // TODO: Delete vehicle
 
+        /*
+        * Updates a vehicle by registration, if existent, using all the fields necessary
+        * */
+        public void UpdateVehicle(String registration, String make, String model, String year, String vehicleClass, int seatNo,
+            String transmission, String fuel, String gps, String sunroof, String color, int dailyRate)
+        {
+            _vehicleRepository.Update(new Vehicle(registration, make, model, year, vehicleClass, seatNo, transmission, fuel, gps, sunroof, color, dailyRate));
+        }
+
+        /*
+        * Deletes a vehicle by registration, if existent. If not, throws Controller Exception.
+        * */
+        public void DeleteVehicle(String registration)
+        {
+            try
+            {
+                // Build a vehicle only by registration because that's needed for comparison
+                _vehicleRepository.Delete(new Vehicle(registration));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
+
+        /*
+         * Searches for a vehicle with specified registration number
+         * */
         public Vehicle GetVehicle(String registration)
         {
-            foreach (Vehicle vehicle in Vehicles)
-            {
-                if (vehicle.Registration.Equals(registration)) return vehicle;
-            }
-            return null;
+            return _vehicleRepository.GetItem(registration);
         }
 
         public String[] VehicleHeader { get => _vehicleRepository.Header; }
 
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
+
+        /** CUSTOMER METHODS**/
+
+        /** RENTAL METHODS**/
     }
 }

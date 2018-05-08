@@ -30,10 +30,11 @@ namespace MRRC.View
             LoadListItems();
         }
 
+        /*
+         * Populates Fleet list with the items in the repository
+         * */
         private void LoadListItems()
         {
-            
-
             foreach(Vehicle vehicle in controller.Vehicles)
             {
                 fleetList.Items.Add(vehicle.CSV);
