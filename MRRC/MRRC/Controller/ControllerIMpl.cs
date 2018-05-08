@@ -1,4 +1,5 @@
 ﻿using MRRC.Domain;
+using MRRC.Domain.Entities;
 using MRRC.Domain.Exceptions;
 using MRRC.Repository;
 using System;
@@ -10,11 +11,14 @@ namespace MRRC.Controller
     {
         private ARepository<Vehicle, String> _vehicleRepository;
         private ARepository<Customer, int> _customerRepository;
+        private ARepository<Rental, Tuple<String, int>> _rentalRepository;
 
-        public ControllerImpl(ARepository<Vehicle, String> vehicleRepository, ARepository<Customer, int> customerRepository)
+        public ControllerImpl(ARepository<Vehicle, String> vehicleRepository,
+            ARepository<Customer, int> customerRepository, ARepository<Rental, Tuple<String, int>> rentalRepository)
         {
             this._vehicleRepository = vehicleRepository;
             this._customerRepository = customerRepository;
+            this._rentalRepository = rentalRepository;
         }
 
         /** FLEET METHODS**/
@@ -124,5 +128,56 @@ namespace MRRC.Controller
         public List<Customer> Customers { get => _customerRepository.Items; }
 
         /** RENTAL METHODS**/
+
+        /*
+         * Adds a rental using all the fields necessary
+         * */
+        public void AddRental(String registrationNumber, int clientID, int dailyRate)
+        {
+            try
+            {
+                _rentalRepository.Add(new Rental(registrationNumber, clientID, dailyRate));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
+
+        /*
+        * Updates a rental, if existent, using all the fields necessary
+        * */
+        public void UpdateRental(String registrationNumber, int clientID, int dailyRate)
+        {
+            _rentalRepository.Update(new Rental(registrationNumber, clientID, dailyRate));
+        }
+
+        /*
+        * Deletes a rental by registration and clientID, if existent. If not, throws Controller Exception.
+        * */
+        public void DeleteRental(Tuple<String, int> registrationAndClient)
+        {
+            try
+            {
+                // Build a Rental only by registration number and client id because that's needed for comparison
+                _rentalRepository.Delete(new Rental(registrationAndClient));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
+
+        /*
+         * Searches for a Rental with specified registrationNumber and clientID
+         * */
+        public Rental GetRental(Tuple<String, int> registrationAndClient)
+        {
+            return _rentalRepository.GetItem(registrationAndClient);
+        }
+
+        public String[] RentalHeader { get => _rentalRepository.Header; }
+
+        public List<Rental> Rentals { get => _rentalRepository.Items; }
     }
 }
