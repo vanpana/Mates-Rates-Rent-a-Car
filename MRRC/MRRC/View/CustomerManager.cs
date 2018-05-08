@@ -1,5 +1,6 @@
 ﻿using MRRC.Controller;
 using MRRC.Domain;
+using MRRC.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,15 @@ namespace MRRC.View
             {
                 customerList.Items.Add(customer.CSV);
             }
+        }
+        
+        /*
+         * Save all data to file when the form is closed
+         * */
+        private void CustomerManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Build the text and write it to file
+            FileUtil.SaveDataToFile(FileUtil.getCustomersFile(), controller.CustomersCSV);
         }
     }
 }

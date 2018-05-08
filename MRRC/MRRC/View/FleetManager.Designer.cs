@@ -48,6 +48,7 @@
             this.Controls.Add(this.fleetList);
             this.Name = "FleetManager";
             this.Text = "FleetManager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FleetManager_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -74,6 +74,14 @@ namespace MRRC.Controller
 
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
 
+        public String VehicleCSV {
+            get {
+                String data = VehicleHeader + "\n";
+                foreach (Vehicle vehicle in Vehicles) { data = data + vehicle.CSV + "\n"; }
+                return data;
+            }
+        }
+
         /** CUSTOMER METHODS**/
 
         /*
@@ -127,6 +135,15 @@ namespace MRRC.Controller
 
         public List<Customer> Customers { get => _customerRepository.Items; }
 
+        public String CustomersCSV
+        {
+            get
+            {
+                String data = CustomerHeader + "\n";
+                foreach (Customer customer in Customers) { data = data + customer.CSV + "\n"; }
+                return data;
+            }
+        }
         /** RENTAL METHODS**/
 
         /*
@@ -179,5 +196,15 @@ namespace MRRC.Controller
         public String[] RentalHeader { get => _rentalRepository.Header; }
 
         public List<Rental> Rentals { get => _rentalRepository.Items; }
+
+        public String RentalCSV
+        {
+            get
+            {
+                String data = RentalHeader + "\n";
+                foreach (Rental rental in Rentals) { data = data + rental.CSV + "\n"; }
+                return data;
+            }
+        }
     }
 }

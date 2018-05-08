@@ -1,5 +1,6 @@
 ﻿using MRRC.Controller;
 using MRRC.Domain.Entities;
+using MRRC.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,15 @@ namespace MRRC.View
             {
                 rentalList.Items.Add(rental.CSV);
             }
+        }
+
+        /*
+         * Save all data to file when the form is closed
+         * */
+        private void RentalManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Build the text and write it to file
+            FileUtil.SaveDataToFile(FileUtil.getRentalsFile(), controller.RentalCSV);
         }
     }
 }

@@ -59,6 +59,7 @@
             this.Controls.Add(this.rentalList);
             this.Name = "RentalManager";
             this.Text = "RentalManager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RentalManager_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

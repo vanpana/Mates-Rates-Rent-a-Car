@@ -48,6 +48,7 @@
             this.Controls.Add(this.customerList);
             this.Name = "CustomerManager";
             this.Text = "CustomerManager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomerManager_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -84,7 +84,8 @@
             this.Controls.Add(this.fleetButton);
             this.Controls.Add(this.Title);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

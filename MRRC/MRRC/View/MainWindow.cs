@@ -11,6 +11,7 @@ using MRRC.Controller;
 using MRRC.Domain.Exceptions;
 using MRRC.Domain.Validators;
 using MRRC.Repository;
+using MRRC.Util;
 using MRRC.View;
 
 namespace MRRC
@@ -41,6 +42,21 @@ namespace MRRC
         private void rentalsButton_Click(object sender, EventArgs e)
         {
             new RentalManager(controller).Show();
+        }
+
+        /*
+         * Save all files on closing the app
+         * */
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Build the fleets text and write it to file
+            FileUtil.SaveDataToFile(FileUtil.getFleetsFile(), controller.VehicleCSV);
+
+            // Build the customers text and write it to file
+            FileUtil.SaveDataToFile(FileUtil.getCustomersFile(), controller.CustomersCSV);
+
+            // Build the rentals text and write it to file
+            FileUtil.SaveDataToFile(FileUtil.getRentalsFile(), controller.RentalCSV);
         }
     }
 }
