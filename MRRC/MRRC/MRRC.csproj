@@ -54,6 +54,12 @@
     <Compile Include="Domain\Validators\CustomerValidator.cs" />
     <Compile Include="Domain\Validators\Validator.cs" />
     <Compile Include="Domain\Validators\VehicleValidator.cs" />
+    <Compile Include="View\CustomerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerManager.Designer.cs">
+      <DependentUpon>CustomerManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FleetManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Repository\ARepository.cs" />
     <Compile Include="Util\FileUtil.cs" />
     <Compile Include="Util\Various.cs" />
+    <EmbeddedResource Include="View\CustomerManager.resx">
+      <DependentUpon>CustomerManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FleetManager.resx">
       <DependentUpon>FleetManager.cs</DependentUpon>
     </EmbeddedResource>

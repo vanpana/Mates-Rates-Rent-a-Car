@@ -31,5 +31,10 @@ namespace MRRC
         {
             new FleetManager(controller).Show();
         }
+
+        private void customersButton_Click(object sender, EventArgs e)
+        {
+            new CustomerManager(controller).Show();
+        }
     }
 }

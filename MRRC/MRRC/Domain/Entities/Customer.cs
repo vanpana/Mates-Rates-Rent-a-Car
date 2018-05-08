@@ -44,5 +44,7 @@ namespace MRRC.Domain
         {
             return this.Id == other.Id;
         }
+
+        public String CSV { get => $"{_id},{_title.ToString()},{_firstName},{_lastName},{_gender.ToString()},{_dateOfBirth}"; }
     }
 }

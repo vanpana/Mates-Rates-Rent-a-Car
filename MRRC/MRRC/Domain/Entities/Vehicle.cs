@@ -69,8 +69,8 @@ namespace MRRC.Domain
 
         public String CSV
         {
-            get => $" {_registration}, {_make}, {_model}, {_year}, {_vehicleClass.ToString()}, {_seatNo.ToString()}," +
-               $"{_transmission.ToString()}, {_fuel.ToString()}, {_gps.ToString()}, {_sunroof.ToString()}, {_color}, {_dailyRate.ToString()}";
+            get => $" {_registration},{_make},{_model},{_year},{_vehicleClass.ToString()},{_seatNo.ToString()}," +
+               $"{_transmission.ToString()},{_fuel.ToString()},{_gps.ToString()},{_sunroof.ToString()},{_color},{_dailyRate.ToString()}";
         }
     }
 }
