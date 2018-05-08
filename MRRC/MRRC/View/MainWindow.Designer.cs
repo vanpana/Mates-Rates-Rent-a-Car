@@ -31,6 +31,7 @@
             this.Title = new System.Windows.Forms.Label();
             this.fleetButton = new System.Windows.Forms.Button();
             this.customersButton = new System.Windows.Forms.Button();
+            this.rentalsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Title
@@ -63,11 +64,22 @@
             this.customersButton.UseVisualStyleBackColor = true;
             this.customersButton.Click += new System.EventHandler(this.customersButton_Click);
             // 
+            // rentalsButton
+            // 
+            this.rentalsButton.Location = new System.Drawing.Point(244, 282);
+            this.rentalsButton.Name = "rentalsButton";
+            this.rentalsButton.Size = new System.Drawing.Size(282, 38);
+            this.rentalsButton.TabIndex = 3;
+            this.rentalsButton.Text = "Manage Rentals";
+            this.rentalsButton.UseVisualStyleBackColor = true;
+            this.rentalsButton.Click += new System.EventHandler(this.rentalsButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rentalsButton);
             this.Controls.Add(this.customersButton);
             this.Controls.Add(this.fleetButton);
             this.Controls.Add(this.Title);
@@ -83,6 +95,7 @@
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Button fleetButton;
         private System.Windows.Forms.Button customersButton;
+        private System.Windows.Forms.Button rentalsButton;
     }
 }
 

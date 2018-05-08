@@ -47,13 +47,16 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerImpl.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
+    <Compile Include="Domain\Entities\Rental.cs" />
     <Compile Include="Domain\Entities\Vehicle.cs" />
     <Compile Include="Domain\Exceptions\ControllerException.cs" />
+    <Compile Include="Domain\Exceptions\RentalValidator.cs" />
     <Compile Include="Domain\Exceptions\RepositoryException.cs" />
     <Compile Include="Domain\Exceptions\ValidatorException.cs" />
     <Compile Include="Domain\Validators\CustomerValidator.cs" />
     <Compile Include="Domain\Validators\Validator.cs" />
     <Compile Include="Domain\Validators\VehicleValidator.cs" />
+    <Compile Include="Repository\RentalRepository.cs" />
     <Compile Include="View\CustomerManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +82,12 @@
     <Compile Include="Repository\ARepository.cs" />
     <Compile Include="Util\FileUtil.cs" />
     <Compile Include="Util\Various.cs" />
+    <Compile Include="View\RentalManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalManager.Designer.cs">
+      <DependentUpon>RentalManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\CustomerManager.resx">
       <DependentUpon>CustomerManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\RentalManager.resx">
+      <DependentUpon>RentalManager.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
