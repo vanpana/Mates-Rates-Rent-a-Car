@@ -72,6 +72,57 @@ namespace MRRC.Controller
 
         /** CUSTOMER METHODS**/
 
+        /*
+         * Adds a customer using all the fields necessary
+         * */
+        public void AddCustomer(int id, String customerTitle, String firstName, String lastName, String gender, String dateOfBirth)
+        {
+            try
+            {
+                _customerRepository.Add(new Customer(id, customerTitle, firstName, lastName, gender, dateOfBirth));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
+
+        /*
+        * Updates a customer by ID, if existent, using all the fields necessary
+        * */
+        public void UpdateCustomer(int id, String customerTitle, String firstName, String lastName, String gender, String dateOfBirth)
+        {
+            _customerRepository.Update(new Customer(id, customerTitle, firstName, lastName, gender, dateOfBirth));
+        }
+
+        /*
+        * Deletes a customer by ID, if existent. If not, throws Controller Exception.
+        * */
+        public void DeleteCustomer(int id)
+        {
+            try
+            {
+                // Build a customer only by id because that's needed for comparison
+                _customerRepository.Delete(new Customer(id));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
+
+        /*
+         * Searches for a customer with specified ID
+         * */
+        public Customer GetCustomer(int id)
+        {
+            return _customerRepository.GetItem(id);
+        }
+
+        public String[] CustomerHeader { get => _customerRepository.Header; }
+
+        public List<Customer> Customers { get => _customerRepository.Items; }
+
         /** RENTAL METHODS**/
     }
 }

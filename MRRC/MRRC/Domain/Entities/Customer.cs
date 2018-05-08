@@ -28,6 +28,11 @@ namespace MRRC.Domain
         public Customer(String[] parameters)
             : this(int.Parse(parameters[0]), parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]) {}
 
+        public Customer(int id)
+        {
+            Id = id;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public CustomerTitle Title { get => _title; set => _title = value; }
         public string FirstName { get => _firstName; set => _firstName = value; }
