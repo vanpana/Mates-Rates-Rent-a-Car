@@ -33,11 +33,20 @@ namespace MRRC
         }
 
         /*
+         * Check if header has been initialised (so the file is not empty).
+         * */
+        private bool checkValidHeader(String header)
+        {
+            return header.Length > 0;
+        }
+
+        /*
          * Show the fleet manager window.
          * */
         private void fleetButton_Click(object sender, EventArgs e)
         {
-            new FleetManager(controller).Show();
+            if (checkValidHeader(controller.VehicleHeader)) new FleetManager(controller).Show();
+            else MessageBox.Show("Must have a valid vehicle file!");
         }
 
         /*
@@ -45,7 +54,8 @@ namespace MRRC
          * */
         private void customersButton_Click(object sender, EventArgs e)
         {
-            new CustomerManager(controller).Show();
+            if (checkValidHeader(controller.CustomerHeader)) new CustomerManager(controller).Show();
+            else MessageBox.Show("Must have a valid customers file!");
         }
 
         /*
@@ -53,7 +63,8 @@ namespace MRRC
          * */
         private void rentalsButton_Click(object sender, EventArgs e)
         {
-            new RentalManager(controller).Show();
+            if (checkValidHeader(controller.RentalHeader)) new RentalManager(controller).Show();
+            else MessageBox.Show("Must have a valid rentals file!");
         }
 
         /*

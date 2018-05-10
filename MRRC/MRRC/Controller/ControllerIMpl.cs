@@ -74,9 +74,9 @@ namespace MRRC.Controller
         }
 
         /*
-         * Get vehicle header as a CSV string.
+         * Get vehicle header as a CSV string. If there is no header, return an empty string.
          * */
-        public String VehicleHeader { get => String.Join(",", _vehicleRepository.Header); }
+        public String VehicleHeader { get => _vehicleRepository.Header.Length > 0 ? String.Join(",", _vehicleRepository.Header) : ""; }
 
         /*
          * Get the list of the vehicles in the repository.
@@ -144,9 +144,9 @@ namespace MRRC.Controller
         }
 
         /*
-         * Get the customer header as a CSV string.
+         * Get the customer header as a CSV string. If there is no header, return an empty string.
          * */
-        public String CustomerHeader { get => String.Join(",", _customerRepository.Header); }
+        public String CustomerHeader { get => _customerRepository.Header.Length > 0 ? String.Join(",", _customerRepository.Header) : ""; }
 
         /*
          * Get all the customers in the repository.
@@ -215,9 +215,9 @@ namespace MRRC.Controller
         }
 
         /*
-         * Get the rental header as CSV string.
+         * Get the rental header as CSV string. If there is no header, return an empty string.
          * */
-        public String RentalHeader { get => String.Join(",", _rentalRepository.Header); }
+        public String RentalHeader { get => _rentalRepository.Header.Length > 0 ? String.Join(",", _rentalRepository.Header) : ""; }
 
         /*
          * Get all the rentals saved in the repository.

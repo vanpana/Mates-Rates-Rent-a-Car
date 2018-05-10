@@ -22,9 +22,10 @@ namespace MRRC.Repository
 
         public ARepository(IValidator<T> validator)
         {
-            _items = new List<T>();
-            _validator = validator;
-            LoadFromFile();
+            _items = new List<T>(); // Initialize item list
+            _validator = validator; // Inject validator
+            _header = new String[0]; // Initialize empty header
+            LoadFromFile(); // Load data from file
         }
 
         protected abstract void LoadFromFile();
