@@ -32,16 +32,25 @@ namespace MRRC
                 new CustomerRepository(new CustomerValidator()), new RentalRepository(new RentalValidator()));
         }
 
+        /*
+         * Show the fleet manager window.
+         * */
         private void fleetButton_Click(object sender, EventArgs e)
         {
             new FleetManager(controller).Show();
         }
 
+        /*
+         * Show the customers manager window.
+         * */
         private void customersButton_Click(object sender, EventArgs e)
         {
             new CustomerManager(controller).Show();
         }
 
+        /*
+         * Show the rentals manager window.
+         * */
         private void rentalsButton_Click(object sender, EventArgs e)
         {
             new RentalManager(controller).Show();

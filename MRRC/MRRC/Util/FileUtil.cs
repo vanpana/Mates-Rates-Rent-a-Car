@@ -51,6 +51,9 @@ namespace MRRC.Util
             mutex.ReleaseMutex();
         }
 
+        /*
+         * Get CSV as a List of array of Strings from a file. 
+         * */
         public static List<String[]> ReadCSVFromFile(String pathToFile)
         {
             // Acquire mutex for reading the CSV file
@@ -73,6 +76,9 @@ namespace MRRC.Util
             return result;
         }
 
+        /*
+         * Save the provided data to the provided file. If the file does not exist, it is created.
+         * */
         public static void SaveDataToFile(String pathToFile, String data)
         {
             File.WriteAllText(pathToFile, data);

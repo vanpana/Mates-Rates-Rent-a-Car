@@ -13,6 +13,9 @@ namespace MRRC.Controller
         private ARepository<Customer, int> _customerRepository;
         private ARepository<Rental, Tuple<String, int>> _rentalRepository;
 
+        /*
+         * Inject repositories into control
+         * */
         public ControllerImpl(ARepository<Vehicle, String> vehicleRepository,
             ARepository<Customer, int> customerRepository, ARepository<Rental, Tuple<String, int>> rentalRepository)
         {
@@ -70,10 +73,19 @@ namespace MRRC.Controller
             return _vehicleRepository.GetItem(registration);
         }
 
+        /*
+         * Get vehicle header as a CSV string.
+         * */
         public String VehicleHeader { get => String.Join(",", _vehicleRepository.Header); }
 
+        /*
+         * Get the list of the vehicles in the repository.
+         * */
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
 
+        /*
+         * Get the list of all vehicles as CSV lines.
+         * */
         public String VehicleCSV {
             get {
                 String data = VehicleHeader + "\r\n";
@@ -131,10 +143,19 @@ namespace MRRC.Controller
             return _customerRepository.GetItem(id);
         }
 
+        /*
+         * Get the customer header as a CSV string.
+         * */
         public String CustomerHeader { get => String.Join(",", _customerRepository.Header); }
 
+        /*
+         * Get all the customers in the repository.
+         * */
         public List<Customer> Customers { get => _customerRepository.Items; }
 
+        /*
+         * Get all the customers as CSV lines.
+         * */
         public String CustomersCSV
         {
             get
@@ -193,10 +214,19 @@ namespace MRRC.Controller
             return _rentalRepository.GetItem(registrationAndClient);
         }
 
+        /*
+         * Get the rental header as CSV string.
+         * */
         public String RentalHeader { get => String.Join(",", _rentalRepository.Header); }
 
+        /*
+         * Get all the rentals saved in the repository.
+         * */
         public List<Rental> Rentals { get => _rentalRepository.Items; }
 
+        /*
+         * Get all the rentals as CSV lines.
+         * */
         public String RentalCSV
         {
             get
