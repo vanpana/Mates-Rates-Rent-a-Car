@@ -11,7 +11,7 @@ namespace MRRC.Domain.Validators
     {
         public VehicleValidator() { }
 
-        public void Validate(Vehicle vehicle)
+        public override void Validate(Vehicle vehicle)
         {
             // Check if the registration is not empty
             if (vehicle.Registration == null || vehicle.Registration.Equals(""))

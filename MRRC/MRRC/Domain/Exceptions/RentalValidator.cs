@@ -10,7 +10,7 @@ namespace MRRC.Domain.Exceptions
 {
     class RentalValidator : IValidator<Rental>
     {
-        public void Validate(Rental rental)
+        public override void Validate(Rental rental)
         {
             // Check if client ID is valid
             if (rental.ClientID < 0) throw new ValidatorException("Client ID must be a valid positive integer!");
