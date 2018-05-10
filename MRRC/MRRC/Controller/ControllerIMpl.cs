@@ -70,14 +70,14 @@ namespace MRRC.Controller
             return _vehicleRepository.GetItem(registration);
         }
 
-        public String[] VehicleHeader { get => _vehicleRepository.Header; }
+        public String VehicleHeader { get => String.Join(",", _vehicleRepository.Header); }
 
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
 
         public String VehicleCSV {
             get {
-                String data = VehicleHeader + "\n";
-                foreach (Vehicle vehicle in Vehicles) { data = data + vehicle.CSV + "\n"; }
+                String data = VehicleHeader + "\r\n";
+                foreach (Vehicle vehicle in Vehicles) { data = data + vehicle.CSV + "\r\n"; }
                 return data;
             }
         }
@@ -131,7 +131,7 @@ namespace MRRC.Controller
             return _customerRepository.GetItem(id);
         }
 
-        public String[] CustomerHeader { get => _customerRepository.Header; }
+        public String CustomerHeader { get => String.Join(",", _customerRepository.Header); }
 
         public List<Customer> Customers { get => _customerRepository.Items; }
 
@@ -139,8 +139,8 @@ namespace MRRC.Controller
         {
             get
             {
-                String data = CustomerHeader + "\n";
-                foreach (Customer customer in Customers) { data = data + customer.CSV + "\n"; }
+                String data = CustomerHeader + "\r\n";
+                foreach (Customer customer in Customers) { data = data + customer.CSV + "\r\n"; }
                 return data;
             }
         }
@@ -193,7 +193,7 @@ namespace MRRC.Controller
             return _rentalRepository.GetItem(registrationAndClient);
         }
 
-        public String[] RentalHeader { get => _rentalRepository.Header; }
+        public String RentalHeader { get => String.Join(",", _rentalRepository.Header); }
 
         public List<Rental> Rentals { get => _rentalRepository.Items; }
 
@@ -201,8 +201,8 @@ namespace MRRC.Controller
         {
             get
             {
-                String data = RentalHeader + "\n";
-                foreach (Rental rental in Rentals) { data = data + rental.CSV + "\n"; }
+                String data = RentalHeader + "\r\n";
+                foreach (Rental rental in Rentals) { data = data + rental.CSV + "\r\n"; }
                 return data;
             }
         }
