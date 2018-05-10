@@ -137,6 +137,7 @@
             // 
             // titleCombo
             // 
+            this.titleCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.titleCombo.FormattingEnabled = true;
             this.titleCombo.Location = new System.Drawing.Point(158, 459);
             this.titleCombo.Name = "titleCombo";
@@ -163,6 +164,7 @@
             // 
             // genderCombo
             // 
+            this.genderCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderCombo.FormattingEnabled = true;
             this.genderCombo.Location = new System.Drawing.Point(84, 537);
             this.genderCombo.Name = "genderCombo";

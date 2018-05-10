@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace MRRC.Domain.Validators
 {
-    public interface IValidator<T>
+    public abstract class IValidator<T>
     {
-        void Validate(T entity);
+        public abstract void Validate(T entity);
+
+        protected Boolean checkStringValidity(String str)
+        {
+            return str != null && !str.Equals("");
+        }
     }
 }
