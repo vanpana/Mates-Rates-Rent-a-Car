@@ -56,6 +56,9 @@ namespace MRRC.Controller
         {
             try
             {
+                // Check if vehicle isn't currently being rented
+                if (GetRental(registration) != null) throw new ControllerException("Vehicle is currently being rented!");
+
                 // Build a vehicle only by registration because that's needed for comparison
                 _vehicleRepository.Delete(new Vehicle(registration));
             }
@@ -126,6 +129,9 @@ namespace MRRC.Controller
         {
             try
             {
+                // Check if client isn't already renting
+                if (GetRental(id) != null) throw new ControllerException("Client is currently renting!");
+
                 // Build a customer only by id because that's needed for comparison
                 _customerRepository.Delete(new Customer(id));
             }
@@ -212,6 +218,24 @@ namespace MRRC.Controller
         public Rental GetRental(Tuple<String, int> registrationAndClient)
         {
             return _rentalRepository.GetItem(registrationAndClient);
+        }
+
+        /*
+         * Searches for a Rental by clientID
+         * */
+        public Rental GetRental(int clientID)
+        {
+            foreach (Rental rental in Rentals) if (rental.ClientID == clientID) return rental;
+            return null;
+        }
+
+        /*
+         * Searches for a Rental by registration number
+         * */
+        public Rental GetRental(String registration)
+        {
+            foreach (Rental rental in Rentals) if (rental.RegistrationNumber.Equals(registration)) return rental;
+            return null;
         }
 
         /*

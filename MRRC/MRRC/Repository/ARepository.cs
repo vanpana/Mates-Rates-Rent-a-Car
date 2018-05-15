@@ -44,6 +44,7 @@ namespace MRRC.Repository
             }
 
             // Check if the item already exists
+            if (Items.Contains(item)) throw new RepositoryException("Item already exists in the list!");
 
             // Add the item to the list
             _items.Add(item);
