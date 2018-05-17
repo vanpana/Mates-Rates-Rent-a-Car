@@ -33,8 +33,7 @@ namespace MRRC.Domain.Entities
 
         public bool Equals(Rental other)
         {
-            return this._clientID == other.ClientID && this._registrationNumber.Equals(other.RegistrationNumber)
-                && this._dailyRate == other.DailyRate;
+            return this._clientID == other.ClientID && this._registrationNumber.Equals(other.RegistrationNumber);
         }
 
         public String CSV { get => $"{_registrationNumber},{_clientID},{_dailyRate}";  }

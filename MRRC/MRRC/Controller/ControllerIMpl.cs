@@ -172,6 +172,35 @@ namespace MRRC.Controller
             }
         }
         /** RENTAL METHODS**/
+        /*
+        * Adds a rental using all only registration and client id necessary
+        * */
+        public void AddRental(String registrationNumber, int customerID)
+        {
+            try
+            {
+                // Check if vehicle exists
+                Vehicle vehicle = GetVehicle(registrationNumber);
+                if (vehicle == null) throw new ControllerException($"Vehicle with registration {registrationNumber} does not exist.");
+
+                // Check if client exists
+                if (GetCustomer(customerID) == null) throw new ControllerException($"Customer with id {customerID} does not exist.");
+
+                // Check if vehicle not rented already or customer isn't already renting
+                foreach (Rental rental in Rentals)
+                {
+                    if (rental.RegistrationNumber.Equals(registrationNumber)) throw new ControllerException("Vehicle is already rented!");
+                    if (rental.ClientID == customerID) throw new ControllerException("Customer is already renting!");
+                }
+
+                // Search for daily rate
+                _rentalRepository.Add(new Rental(registrationNumber, customerID, vehicle.DailyRate));
+            }
+            catch (RepositoryException repositoryException)
+            {
+                throw new ControllerException(repositoryException.Message);
+            }
+        }
 
         /*
          * Adds a rental using all the fields necessary
@@ -219,6 +248,7 @@ namespace MRRC.Controller
         {
             return _rentalRepository.GetItem(registrationAndClient);
         }
+
 
         /*
          * Searches for a Rental by clientID
