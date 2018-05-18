@@ -30,10 +30,10 @@ namespace MRRC.Controller
          * Adds a vehicle using all the fields necessary
          * */
         public void AddVehicle(String registration, String make, String model, String year, String vehicleClass, int seatNo,
-            String transmission, String fuel, String gps, String sunroof, String color, int dailyRate)
+            String transmission, String fuel, bool gps, bool sunroof, String color, int dailyRate)
         {
             try {
-                _vehicleRepository.Add(new Vehicle(registration, make, model, year, vehicleClass, seatNo, transmission, fuel, gps, sunroof, color, dailyRate));
+                _vehicleRepository.Add(new Vehicle(registration, make, model, year, vehicleClass, seatNo, transmission, fuel, gps.ToString(), sunroof.ToString(), color, dailyRate));
             } catch (RepositoryException repositoryException)
             {
                 throw new ControllerException(repositoryException.Message);
@@ -44,9 +44,9 @@ namespace MRRC.Controller
         * Updates a vehicle by registration, if existent, using all the fields necessary
         * */
         public void UpdateVehicle(String registration, String make, String model, String year, String vehicleClass, int seatNo,
-            String transmission, String fuel, String gps, String sunroof, String color, int dailyRate)
+            String transmission, String fuel, bool gps, bool sunroof, String color, int dailyRate)
         {
-            _vehicleRepository.Update(new Vehicle(registration, make, model, year, vehicleClass, seatNo, transmission, fuel, gps, sunroof, color, dailyRate));
+            _vehicleRepository.Update(new Vehicle(registration, make, model, year, vehicleClass, seatNo, transmission, fuel, gps.ToString(), sunroof.ToString(), color, dailyRate));
         }
 
         /*
