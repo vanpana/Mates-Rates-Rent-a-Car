@@ -178,6 +178,7 @@
             this.classCombo.Name = "classCombo";
             this.classCombo.Size = new System.Drawing.Size(121, 32);
             this.classCombo.TabIndex = 16;
+            this.classCombo.SelectedValueChanged += new System.EventHandler(this.classCombo_SelectedValueChanged);
             // 
             // seatLabel
             // 

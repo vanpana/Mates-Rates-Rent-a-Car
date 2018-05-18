@@ -191,9 +191,11 @@ namespace MRRC.View
                 // Reload the list
                 LoadListItems();
             }
-
-            action = Actions.delete;
-            ShowDeleteInputs();
+            else
+            {
+                action = Actions.delete;
+                ShowDeleteInputs();
+            }
         }
 
         private void actionButton_Click(object sender, EventArgs e)
@@ -259,6 +261,34 @@ namespace MRRC.View
             {
                 // Reload the list
                 LoadListItems();
+            }
+        }
+
+        private void classCombo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            // Get the selected vehicle class
+            String value = classCombo.GetItemText(classCombo.SelectedItem);
+
+            // Clear possible values
+            gpsBox.Checked = false;
+            sunBox.Checked = false;
+            fuelCombo.ResetText();
+            fuelCombo.SelectedIndex = -1;
+
+            // Set values regarding vehicle class
+            if (value.Equals("luxury"))
+            {
+                gpsBox.Checked = true;
+                sunBox.Checked = true;
+            } 
+            else if (value.Equals("commercial"))
+            {
+                int counter = 0;
+                foreach (Fuel fuel in Enum.GetValues(typeof(Fuel)).Cast<object>().ToArray())
+                {
+                    if (fuel.ToString().Equals("diesel")) { fuelCombo.SelectedIndex = counter; break; }
+                    counter++;
+                }
             }
         }
     }

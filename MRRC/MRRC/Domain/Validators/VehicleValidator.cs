@@ -17,6 +17,8 @@ namespace MRRC.Domain.Validators
             if (vehicle.Registration == null || vehicle.Registration.Equals(""))
                 throw new ValidatorException("Registration can't be null or empty!");
 
+            if (vehicle.SeatNo < 2 || vehicle.SeatNo > 10) throw new ValidatorException("Invalid seat number");
+
             // TODO more validations
         }
     }
