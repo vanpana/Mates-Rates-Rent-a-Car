@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace MRRC.Domain.Entities.Attributes
 {
-    class GPSAttribute
+    class GPSAttribute : Attribute
     {
+        public GPSAttribute()
+        {
+        }
+
+        public override bool Check(Vehicle vehicle)
+        {
+            return vehicle.GPS;
+        }
     }
 }

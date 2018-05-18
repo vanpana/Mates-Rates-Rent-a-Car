@@ -19,7 +19,7 @@ namespace MRRC.Domain.Entities.Logicals
 
         public List<Vehicle> Filter(List<Vehicle> vehicles)
         {
-            return (List<Vehicle>) logical1.Filter(vehicles).Intersect(logical2.Filter(vehicles));
+            return logical1.Filter(vehicles).Union(logical2.Filter(vehicles)).ToList();
         }
     }
 }

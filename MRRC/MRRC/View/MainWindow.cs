@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MRRC.Controller;
 using MRRC.Domain;
+using MRRC.Domain.Entities.Attributes;
+using MRRC.Domain.Entities.Logicals;
 using MRRC.Domain.Exceptions;
 using MRRC.Domain.Validators;
 using MRRC.Repository;
@@ -80,6 +82,17 @@ namespace MRRC
 
             // Build the rentals text and write it to file
             FileUtil.SaveDataToFile(FileUtil.getRentalsFile(), controller.RentalCSV);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Logical logical = new AndCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new GPSAttribute()));
+
+            Logical logical = new AndCompositeLogical(
+                new OrCompositeLogical(new OrCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new ColorAttribute("white"))), new LogicalAttribute(new ColorAttribute("grey"))),
+                new OrCompositeLogical(new LogicalAttribute(new GPSAttribute()), new LogicalAttribute(new SunroofAttribute())));
+
+            MessageBox.Show(logical.Filter(controller.Vehicles).Count.ToString());
         }
     }
 }
