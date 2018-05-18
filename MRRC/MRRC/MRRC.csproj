@@ -46,7 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerImpl.cs" />
+    <Compile Include="Domain\Entities\Attribute.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
+    <Compile Include="Domain\Entities\Logicals\And.cs" />
+    <Compile Include="Domain\Entities\Logicals\Logical.cs" />
     <Compile Include="Domain\Entities\Rental.cs" />
     <Compile Include="Domain\Entities\Vehicle.cs" />
     <Compile Include="Domain\Exceptions\ControllerException.cs" />
