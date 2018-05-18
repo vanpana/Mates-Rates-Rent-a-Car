@@ -49,6 +49,7 @@
     <Compile Include="Domain\Entities\Attributes\Attribute.cs" />
     <Compile Include="Domain\Entities\Attributes\ColorAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\GPSAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\PriceAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\SeatsAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\SunroofAttribute.cs" />
     <Compile Include="Domain\Entities\Logicals\AndCompositeLogical.cs" />
@@ -99,6 +100,12 @@
     <Compile Include="View\RentalManager.Designer.cs">
       <DependentUpon>RentalManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SearchVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchVehicle.Designer.cs">
+      <DependentUpon>SearchVehicle.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\CustomerManager.resx">
       <DependentUpon>CustomerManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="View\RentalManager.resx">
       <DependentUpon>RentalManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchVehicle.resx">
+      <DependentUpon>SearchVehicle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

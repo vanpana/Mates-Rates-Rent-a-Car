@@ -126,6 +126,9 @@ namespace MRRC.View
         {
             action = Actions.add;
             ShowAddDeleteInputs();
+
+            SearchVehicle searchVehicle = new SearchVehicle(controller);
+            searchVehicle.Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
