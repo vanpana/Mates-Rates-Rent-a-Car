@@ -50,38 +50,54 @@ namespace MRRC.View
         {
             registrationLabel.Visible = false;
             registrationText.Visible = false;
+            registrationLabel.Text = "";
 
             makeLabel.Visible = false;
             makeText.Visible = false;
+            makeText.Text = "";
 
             modelLabel.Visible = false;
             modelText.Visible = false;
+            modelText.Text = "";
 
             yearLabel.Visible = false;
             yearText.Visible = false;
+            yearText.Text = "";
 
             classLabel.Visible = false;
             classCombo.Visible = false;
+            classCombo.ResetText();
+            classCombo.SelectedIndex = -1;
 
             seatLabel.Visible = false;
             seatText.Visible = false;
+            seatText.Text = "";
 
             transmissionLabel.Visible = false;
             transmissionCombo.Visible = false;
+            transmissionCombo.ResetText();
+            transmissionCombo.SelectedIndex = -1;
 
             fuelLabel.Visible = false;
             fuelCombo.Visible = false;
+            fuelCombo.ResetText();
+            fuelCombo.SelectedIndex = -1;
 
             gpsBox.Visible = false;
+            gpsBox.Checked = false;
             sunBox.Visible = false;
+            sunBox.Checked = false;
 
             colorLabel.Visible = false;
             colorText.Visible = false;
+            colorText.Text = "";
 
             rateLabel.Visible = false;
             rateText.Visible = false;
+            rateText.Text = "";
 
             messageLabel.Visible = false;
+            messageLabel.Text = "";
         }
 
         private void LoadComboBoxes()
