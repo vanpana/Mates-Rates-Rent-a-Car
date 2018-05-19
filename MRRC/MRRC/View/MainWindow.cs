@@ -83,25 +83,5 @@ namespace MRRC
             // Build the rentals text and write it to file
             FileUtil.SaveDataToFile(FileUtil.getRentalsFile(), controller.RentalCSV);
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Logical logical = new AndCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new GPSAttribute()));
-
-            // Logical logical = new AndCompositeLogical(
-            //     new OrCompositeLogical(new OrCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new ColorAttribute("white"))), new LogicalAttribute(new ColorAttribute("grey"))),
-            //     new OrCompositeLogical(new LogicalAttribute(new GPSAttribute()), new LogicalAttribute(new SunroofAttribute())));
-
-            // MessageBox.Show(logical.Filter(controller.Vehicles).Count.ToString());
-
-            // String q = "(dada (nu nu)) and (ces (les mes))";
-            String q = "gps and (red or green)";
-            // int[] dada = Various.GetKeywordStartEndPosition(q, "and");
-            // String[] parts = LogicalUtil.Split(q);
-            // Console.WriteLine(parts[0] + ", " + parts[1] + ", " + parts[2]);
-
-            Logical logical = LogicalUtil.GetLogical(q);
-            Console.WriteLine(logical.Filter(controller.Vehicles).Count);
-        }
     }
 }
