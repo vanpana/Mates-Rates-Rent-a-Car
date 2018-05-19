@@ -16,6 +16,7 @@ namespace MRRC.Util
         private static readonly String[] colors = new String[] { "red", "green", "blue", "grey", "black", "white", "pink" };
         private static readonly String[] fuel = String.Join(",", Enum.GetValues(typeof(Fuel)).Cast<Fuel>().ToList()).Split(',');
         private static readonly String[] vehicleClass = String.Join(",", Enum.GetValues(typeof(VehicleClass)).Cast<VehicleClass>().ToList()).Split(',');
+        private static readonly String[] transmission = String.Join(",", Enum.GetValues(typeof(Transmission)).Cast<Transmission>().ToList()).Split(',');
 
         // Static methods
         public static String[] Split(String query)
@@ -109,6 +110,7 @@ namespace MRRC.Util
             if (fuel.Contains(value)) attribute = new EngineAttribute(value);
             if (colors.Contains(value)) attribute = new ColorAttribute(value);
             if (vehicleClass.Contains(value)) attribute = new ClassAttribute(value);
+            if (transmission.Contains(value)) attribute = new TransmissionAttribute(value);
 
             if (value.Contains("seater")) attribute = new SeatsAttribute(value);
             if (value.Equals("gps")) attribute = new GPSAttribute();

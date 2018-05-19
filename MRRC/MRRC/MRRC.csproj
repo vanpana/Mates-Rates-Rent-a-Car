@@ -54,6 +54,7 @@
     <Compile Include="Domain\Entities\Attributes\PriceAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\SeatsAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\SunroofAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\TransmissionAttribute.cs" />
     <Compile Include="Domain\Entities\Logicals\AndCompositeLogical.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
     <Compile Include="Domain\Entities\Logicals\And.cs" />
