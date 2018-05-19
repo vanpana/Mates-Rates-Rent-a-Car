@@ -1,4 +1,7 @@
-﻿using MRRC.Domain.Exceptions;
+﻿using MRRC.Domain;
+using MRRC.Domain.Entities.Attributes;
+using MRRC.Domain.Entities.Logicals;
+using MRRC.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +12,12 @@ namespace MRRC.Util
 {
     class LogicalUtil
     {
+        // Static fields
+        private static readonly String[] colors = new String[] { "red", "green", "blue", "grey", "black", "white", "pink" };
+        private static readonly String[] fuel = String.Join(",", Enum.GetValues(typeof(Fuel)).Cast<Fuel>().ToList()).Split(',');
+        private static readonly String[] vehicleClass = String.Join(",", Enum.GetValues(typeof(VehicleClass)).Cast<VehicleClass>().ToList()).Split(',');
+
+        // Static methods
         public static String[] Split(String query)
         {
             // Lowercase the query
@@ -70,6 +79,41 @@ namespace MRRC.Util
 
             // Split by found indexes
             return new string[] { query.Substring(0, indexes[0]), logicWord, query.Substring(indexes[1], query.Length - indexes[1]) };
+        }
+
+        public static Logical GetLogical(String query)
+        {
+            return GetLogicalFromParts(Split(query));
+        }
+        
+        private static Logical GetLogicalFromParts(String[] parts)
+        {
+            Logical leftSide = null, rightSide = null;
+
+            if (parts[0].Split(' ').Length == 1) leftSide = GetLogicalAttribute(parts[0]);
+            else if (parts[0].Split(' ').Length != 1) leftSide = GetLogicalFromParts(Split(parts[0]));
+
+            if (parts[2].Split(' ').Length == 1) rightSide = GetLogicalAttribute(parts[2]);
+            else if (parts[2].Split(' ').Length != 1) rightSide = GetLogicalFromParts(Split(parts[2]));
+
+            if (parts[1].Equals("and")) return new AndCompositeLogical(leftSide, rightSide);
+            else if (parts[1].Equals("or")) return new OrCompositeLogical(leftSide, rightSide);
+
+            return null;
+        }
+
+        private static Logical GetLogicalAttribute(String value)
+        {
+            MRRC.Domain.Entities.Attribute attribute = null;
+
+            if (fuel.Contains(value)) attribute = new EngineAttribute(value);
+            if (colors.Contains(value)) attribute = new ColorAttribute(value);
+            if (vehicleClass.Contains(value)) attribute = new ClassAttribute(value);
+
+            if (value.Equals("gps")) attribute = new GPSAttribute();
+            if (value.Equals("sunroof")) attribute = new SunroofAttribute();
+
+            return attribute != null ? new LogicalAttribute(attribute) : null;
         }
     }
 }

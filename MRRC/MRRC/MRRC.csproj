@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerImpl.cs" />
     <Compile Include="Domain\Entities\Attributes\Attribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\ClassAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\ColorAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\EngineAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\GPSAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\PriceAttribute.cs" />
     <Compile Include="Domain\Entities\Attributes\SeatsAttribute.cs" />

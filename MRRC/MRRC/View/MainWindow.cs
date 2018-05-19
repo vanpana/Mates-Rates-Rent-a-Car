@@ -95,10 +95,13 @@ namespace MRRC
             // MessageBox.Show(logical.Filter(controller.Vehicles).Count.ToString());
 
             // String q = "(dada (nu nu)) and (ces (les mes))";
-            String q = "dada or (nunu and yaya)";
+            String q = "gps and (red or green)";
             // int[] dada = Various.GetKeywordStartEndPosition(q, "and");
-            String[] parts = LogicalUtil.Split(q);
-            Console.WriteLine(parts[0] + ", " + parts[1] + ", " + parts[2]);
+            // String[] parts = LogicalUtil.Split(q);
+            // Console.WriteLine(parts[0] + ", " + parts[1] + ", " + parts[2]);
+
+            Logical logical = LogicalUtil.GetLogical(q);
+            Console.WriteLine(logical.Filter(controller.Vehicles).Count);
         }
     }
 }
