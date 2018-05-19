@@ -89,6 +89,23 @@ namespace MRRC.Controller
         public List<Vehicle> Vehicles { get => _vehicleRepository.Items; }
 
         /*
+         * Get the list of the vehicles in the repository which are available for renting.
+         * */
+        public List<Vehicle> AvailableVehicles
+        {
+            get
+                {
+                List<Vehicle> vehicles = new List<Vehicle>();
+
+                foreach(Vehicle vehicle in Vehicles)
+                {
+                    if (GetRental(vehicle.Registration) == null) vehicles.Add(vehicle);
+                }
+
+                return vehicles;
+            }
+        }
+        /*
          * Get the list of all vehicles as CSV lines.
          * */
         public String VehicleCSV {

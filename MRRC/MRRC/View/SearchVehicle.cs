@@ -38,7 +38,7 @@ namespace MRRC.View
                 // If there is no input, load all vehicles
                 if (rateBox.Text.Equals("") && queryText.Text.Equals(""))
                 {
-                    LoadListItems(controller.Vehicles);
+                    LoadListItems(controller.AvailableVehicles);
                 }
                 else if (!rateBox.Text.Equals("") && queryText.Text.Equals(""))
                 {
@@ -57,13 +57,13 @@ namespace MRRC.View
 
                     Logical logical = new LogicalAttribute(new PriceAttribute(min, max));
 
-                    LoadListItems(logical.Filter(controller.Vehicles));
+                    LoadListItems(logical.Filter(controller.AvailableVehicles));
                 }
                 else if (rateBox.Text.Equals("") && !queryText.Text.Equals(""))
                 {
                     Logical logical = controller.GetLogicalFromQuery(queryText.Text);
 
-                    LoadListItems(logical.Filter(controller.Vehicles));
+                    LoadListItems(logical.Filter(controller.AvailableVehicles));
                 }
             } catch (Exception exception)
             {
