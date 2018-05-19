@@ -24,10 +24,11 @@ namespace MRRC.View
 
             this.controller = controller;
             errorBox.Text = "";
-
-            // TODO: Only display the non rented vehicles
         }
 
+        /*
+         * Filter the vehicles
+         * */
         private void actionButton_Click(object sender, EventArgs e)
         {
             // Set the error message to nothing
@@ -35,38 +36,38 @@ namespace MRRC.View
 
             try
             {
+                Logical logical;
+
                 // If there is no input, load all vehicles
                 if (rateBox.Text.Equals("") && queryText.Text.Equals(""))
                 {
-                    LoadListItems(controller.AvailableVehicles);
+                    logical = null;
                 }
+                // If there is only rate input, Load vehicles with the price range specified.
                 else if (!rateBox.Text.Equals("") && queryText.Text.Equals(""))
                 {
-                    // Check if format is min-max
-                    String rate = rateBox.Text.Replace(" ", "");
-
-                    // Split the rate string
-                    String[] parts = rate.Split('-');
-
-                    // Check if the format is correct
-                    if (parts.Length != 2) throw new Exception("Invalid price format!");
-
-                    // Get the min and max rates
-                    int min = int.Parse(parts[0]);
-                    int max = int.Parse(parts[1]);
-
-                    Logical logical = new LogicalAttribute(new PriceAttribute(min, max));
-
-                    LoadListItems(logical.Filter(controller.AvailableVehicles));
+                    // Get logical expression
+                    logical = controller.GetLogicalFromRate(rateBox.Text);
                 }
+                // If there is only query text, load vehicles matching the query.
                 else if (rateBox.Text.Equals("") && !queryText.Text.Equals(""))
                 {
-                    Logical logical = controller.GetLogicalFromQuery(queryText.Text);
-
-                    LoadListItems(logical.Filter(controller.AvailableVehicles));
+                    // Get logical expression
+                    logical = controller.GetLogicalFromQuery(queryText.Text);
                 }
+                // If both rate and query have values, load vehicles matching the rate and query
+                else
+                {
+                    logical = new AndCompositeLogical(controller.GetLogicalFromRate(rateBox.Text), controller.GetLogicalFromQuery(queryText.Text));
+                }
+
+                if (logical != null) // Load vehicles based on the expression
+                    LoadListItems(logical.Filter(controller.AvailableVehicles));
+                // Load all available vehicles
+                else LoadListItems(controller.AvailableVehicles);
             } catch (Exception exception)
             {
+                // Show the error in the message box.
                 errorBox.Text = exception.Message;
             }
         }

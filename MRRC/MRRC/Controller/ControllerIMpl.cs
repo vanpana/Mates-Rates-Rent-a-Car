@@ -1,5 +1,6 @@
 ﻿using MRRC.Domain;
 using MRRC.Domain.Entities;
+using MRRC.Domain.Entities.Attributes;
 using MRRC.Domain.Entities.Logicals;
 using MRRC.Domain.Exceptions;
 using MRRC.Repository;
@@ -311,6 +312,31 @@ namespace MRRC.Controller
         }
 
         // Searching
+        /*
+         * Get Logical expression from rate query. (format should be min-max)
+         * */
+        public Logical GetLogicalFromRate(String rateQuery)
+        {
+            // Check if format is min-max
+            String rate = rateQuery.Replace(" ", "");
+
+            // Split the rate string
+            String[] parts = rate.Split('-');
+
+            // Check if the format is correct
+            if (parts.Length != 2) throw new Exception("Invalid price format!");
+
+            // Get the min and max rates
+            int min = int.Parse(parts[0]);
+            int max = int.Parse(parts[1]);
+
+            // Build the logical attribute
+            return new LogicalAttribute(new PriceAttribute(min, max));
+        }
+
+        /*
+         * Get logical expression from search query.
+         * */
         public Logical GetLogicalFromQuery(String query)
         {
             if (query.Split(' ').Length == 1) return LogicalUtil.GetLogicalAttribute(query);
