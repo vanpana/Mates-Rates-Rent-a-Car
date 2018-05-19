@@ -88,11 +88,17 @@ namespace MRRC
         {
             // Logical logical = new AndCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new GPSAttribute()));
 
-            Logical logical = new AndCompositeLogical(
-                new OrCompositeLogical(new OrCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new ColorAttribute("white"))), new LogicalAttribute(new ColorAttribute("grey"))),
-                new OrCompositeLogical(new LogicalAttribute(new GPSAttribute()), new LogicalAttribute(new SunroofAttribute())));
+            // Logical logical = new AndCompositeLogical(
+            //     new OrCompositeLogical(new OrCompositeLogical(new LogicalAttribute(new ColorAttribute("red")), new LogicalAttribute(new ColorAttribute("white"))), new LogicalAttribute(new ColorAttribute("grey"))),
+            //     new OrCompositeLogical(new LogicalAttribute(new GPSAttribute()), new LogicalAttribute(new SunroofAttribute())));
 
-            MessageBox.Show(logical.Filter(controller.Vehicles).Count.ToString());
+            // MessageBox.Show(logical.Filter(controller.Vehicles).Count.ToString());
+
+            // String q = "(dada (nu nu)) and (ces (les mes))";
+            String q = "dada or (nunu and yaya)";
+            // int[] dada = Various.GetKeywordStartEndPosition(q, "and");
+            String[] parts = LogicalUtil.Split(q);
+            Console.WriteLine(parts[0] + ", " + parts[1] + ", " + parts[2]);
         }
     }
 }

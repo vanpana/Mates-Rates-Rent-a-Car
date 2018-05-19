@@ -62,6 +62,7 @@
     <Compile Include="Domain\Entities\Rental.cs" />
     <Compile Include="Domain\Entities\Vehicle.cs" />
     <Compile Include="Domain\Exceptions\ControllerException.cs" />
+    <Compile Include="Domain\Exceptions\ParseException.cs" />
     <Compile Include="Domain\Exceptions\RentalValidator.cs" />
     <Compile Include="Domain\Exceptions\RepositoryException.cs" />
     <Compile Include="Domain\Exceptions\ValidatorException.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Domain\Validators\Validator.cs" />
     <Compile Include="Domain\Validators\VehicleValidator.cs" />
     <Compile Include="Repository\RentalRepository.cs" />
+    <Compile Include="Util\LogicalUtil.cs" />
     <Compile Include="View\CustomerManager.cs">
       <SubType>Form</SubType>
     </Compile>
