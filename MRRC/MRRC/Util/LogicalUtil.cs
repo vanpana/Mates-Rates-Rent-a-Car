@@ -99,10 +99,10 @@ namespace MRRC.Util
             if (parts[1].Equals("and")) return new AndCompositeLogical(leftSide, rightSide);
             else if (parts[1].Equals("or")) return new OrCompositeLogical(leftSide, rightSide);
 
-            return null;
+            throw new ParseException("Invalid query format!");
         }
 
-        private static Logical GetLogicalAttribute(String value)
+        public static Logical GetLogicalAttribute(String value)
         {
             MRRC.Domain.Entities.Attribute attribute = null;
 
@@ -113,7 +113,9 @@ namespace MRRC.Util
             if (value.Equals("gps")) attribute = new GPSAttribute();
             if (value.Equals("sunroof")) attribute = new SunroofAttribute();
 
-            return attribute != null ? new LogicalAttribute(attribute) : null;
+            if (attribute == null) throw new ParseException($"Attribute {value} not found!");
+
+            return new LogicalAttribute(attribute);
         }
     }
 }

@@ -23,14 +23,19 @@ namespace MRRC.View
             InitializeComponent();
 
             this.controller = controller;
+            errorBox.Text = "";
 
             // TODO: Only display the non rented vehicles
         }
 
         private void actionButton_Click(object sender, EventArgs e)
         {
+            // Set the error message to nothing
+            errorBox.Text = "";
+
             try
             {
+                // If there is no input, load all vehicles
                 if (rateBox.Text.Equals("") && queryText.Text.Equals(""))
                 {
                     LoadListItems(controller.Vehicles);
@@ -51,6 +56,12 @@ namespace MRRC.View
                     int max = int.Parse(parts[1]);
 
                     Logical logical = new LogicalAttribute(new PriceAttribute(min, max));
+
+                    LoadListItems(logical.Filter(controller.Vehicles));
+                }
+                else if (rateBox.Text.Equals("") && !queryText.Text.Equals(""))
+                {
+                    Logical logical = controller.GetLogicalFromQuery(queryText.Text);
 
                     LoadListItems(logical.Filter(controller.Vehicles));
                 }

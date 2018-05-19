@@ -1,7 +1,9 @@
 ﻿using MRRC.Domain;
 using MRRC.Domain.Entities;
+using MRRC.Domain.Entities.Logicals;
 using MRRC.Domain.Exceptions;
 using MRRC.Repository;
+using MRRC.Util;
 using System;
 using System.Collections.Generic;
 
@@ -290,5 +292,12 @@ namespace MRRC.Controller
                 return data;
             }
         }
+
+        // Searching
+        public Logical GetLogicalFromQuery(String query)
+        {
+            if (query.Split(' ').Length == 1) return LogicalUtil.GetLogicalAttribute(query);
+            return LogicalUtil.GetLogical(query);
+        } 
     }
 }
