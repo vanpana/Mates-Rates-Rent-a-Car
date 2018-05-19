@@ -19,6 +19,9 @@ namespace MRRC.Util
         private static readonly String[] transmission = String.Join(",", Enum.GetValues(typeof(Transmission)).Cast<Transmission>().ToList()).Split(',');
 
         // Static methods
+        /*
+         * Splits a string (the query) by AND and OR keywords. If they aren't found, it throws an exception.
+         * */
         public static String[] Split(String query)
         {
             // Lowercase the query
@@ -39,7 +42,6 @@ namespace MRRC.Util
             if (query[0] == '(' && query[query.Length - 1] == ')')
             {
                 String noParentheses = query.Substring(1, query.Length - 2);
-
                 if (Various.CheckParentheses(noParentheses)) query = noParentheses;
             }
 
@@ -55,6 +57,7 @@ namespace MRRC.Util
                 }
                 catch (ParseException)
                 {
+                    // If the method throws exception, AND was not found
                     foundAnd = false;
                 }
             }
@@ -71,6 +74,7 @@ namespace MRRC.Util
                 }
                 catch (ParseException)
                 {
+                    // If the method throws exception, OR was not found
                     foundOr = false;
                 }
             }
@@ -82,30 +86,51 @@ namespace MRRC.Util
             return new string[] { query.Substring(0, indexes[0]), logicWord, query.Substring(indexes[1], query.Length - indexes[1]) };
         }
 
+        /*
+         * Builds a logical expression for a provided query.
+         * */
         public static Logical GetLogical(String query)
         {
             return GetLogicalFromParts(Split(query));
         }
         
+        /*
+         * Gets a composite logical (AndComposite or OrComposite based on the keyword on parts[1]).
+         * */
         private static Logical GetLogicalFromParts(String[] parts)
         {
-            Logical leftSide = null, rightSide = null;
+            // Get the left side and right side
+            Logical leftSide = GetSideLogical(parts[0]), rightSide = GetSideLogical(parts[2]);
 
-            if (parts[0].Split(' ').Length == 1) leftSide = GetLogicalAttribute(parts[0]);
-            else if (parts[0].Split(' ').Length != 1) leftSide = GetLogicalFromParts(Split(parts[0]));
-
-            if (parts[2].Split(' ').Length == 1) rightSide = GetLogicalAttribute(parts[2]);
-            else if (parts[2].Split(' ').Length != 1) rightSide = GetLogicalFromParts(Split(parts[2]));
-
+            // If the keyword is AND, build an AndCompositeLogical
             if (parts[1].Equals("and")) return new AndCompositeLogical(leftSide, rightSide);
+            // If the keyword is OR, build an AndCompositeLogical
             else if (parts[1].Equals("or")) return new OrCompositeLogical(leftSide, rightSide);
 
+            // If no keyword is found, throw an exception
             throw new ParseException("Invalid query format!");
         }
 
+        /*
+         * If a side is composite, break in pieces and try again.
+         * */
+        private static Logical GetSideLogical(String part)
+        {
+            // If side is a single attribute, get the attribute
+            if (part.Split(' ').Length == 1) return GetLogicalAttribute(part);
+            // If side is a composite attribute, break it into pieces and try to get the attributes
+            else if (part.Split(' ').Length != 1) return GetLogicalFromParts(Split(part));
+
+            // If nothing matches, throw an exception
+            throw new ParseException("Invalid query format!");
+        }
+
+        /*
+         * Build an attribute based on a value. Search in the static fields for the value.
+         * */
         public static Logical GetLogicalAttribute(String value)
         {
-            MRRC.Domain.Entities.Attribute attribute = null;
+            Domain.Entities.Attribute attribute = null;
 
             if (fuel.Contains(value)) attribute = new EngineAttribute(value);
             if (colors.Contains(value)) attribute = new ColorAttribute(value);
