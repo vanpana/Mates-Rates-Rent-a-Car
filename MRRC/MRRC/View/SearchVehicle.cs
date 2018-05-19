@@ -65,6 +65,9 @@ namespace MRRC.View
                     LoadListItems(logical.Filter(controller.AvailableVehicles));
                 // Load all available vehicles
                 else LoadListItems(controller.AvailableVehicles);
+
+                // If no vehicle was loaded, show a message
+                if (vehicleList.Items.Count == 0) vehicleList.Items.Add("Sorry, no vehicle found!");
             } catch (Exception exception)
             {
                 // Show the error in the message box.
