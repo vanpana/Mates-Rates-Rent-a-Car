@@ -46,10 +46,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerImpl.cs" />
+    <Compile Include="Domain\Entities\Attributes\Attribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\ClassAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\ColorAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\EngineAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\GPSAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\PriceAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\SeatsAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\SunroofAttribute.cs" />
+    <Compile Include="Domain\Entities\Attributes\TransmissionAttribute.cs" />
+    <Compile Include="Domain\Entities\Logicals\AndCompositeLogical.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
+    <Compile Include="Domain\Entities\Logicals\And.cs" />
+    <Compile Include="Domain\Entities\Logicals\Logical.cs" />
+    <Compile Include="Domain\Entities\Logicals\LogicalAttribute.cs" />
+    <Compile Include="Domain\Entities\Logicals\Or.cs" />
+    <Compile Include="Domain\Entities\Logicals\OrCompositeLogical.cs" />
     <Compile Include="Domain\Entities\Rental.cs" />
     <Compile Include="Domain\Entities\Vehicle.cs" />
     <Compile Include="Domain\Exceptions\ControllerException.cs" />
+    <Compile Include="Domain\Exceptions\ParseException.cs" />
     <Compile Include="Domain\Exceptions\RentalValidator.cs" />
     <Compile Include="Domain\Exceptions\RepositoryException.cs" />
     <Compile Include="Domain\Exceptions\ValidatorException.cs" />
@@ -57,6 +73,7 @@
     <Compile Include="Domain\Validators\Validator.cs" />
     <Compile Include="Domain\Validators\VehicleValidator.cs" />
     <Compile Include="Repository\RentalRepository.cs" />
+    <Compile Include="Util\LogicalUtil.cs" />
     <Compile Include="View\CustomerManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +105,12 @@
     <Compile Include="View\RentalManager.Designer.cs">
       <DependentUpon>RentalManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SearchVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchVehicle.Designer.cs">
+      <DependentUpon>SearchVehicle.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\CustomerManager.resx">
       <DependentUpon>CustomerManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="View\RentalManager.resx">
       <DependentUpon>RentalManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchVehicle.resx">
+      <DependentUpon>SearchVehicle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MRRC.Controller;
 using MRRC.Domain;
+using MRRC.Domain.Entities.Attributes;
+using MRRC.Domain.Entities.Logicals;
 using MRRC.Domain.Exceptions;
 using MRRC.Domain.Validators;
 using MRRC.Repository;
