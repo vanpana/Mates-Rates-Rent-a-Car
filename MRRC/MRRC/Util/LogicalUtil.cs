@@ -110,6 +110,7 @@ namespace MRRC.Util
             if (colors.Contains(value)) attribute = new ColorAttribute(value);
             if (vehicleClass.Contains(value)) attribute = new ClassAttribute(value);
 
+            if (value.Contains("seater")) attribute = new SeatsAttribute(value);
             if (value.Equals("gps")) attribute = new GPSAttribute();
             if (value.Equals("sunroof")) attribute = new SunroofAttribute();
 
